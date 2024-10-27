@@ -15,9 +15,9 @@ export const SocketProvider = ({ children }) => {
 
   useEffect(() => {
     if (authUser) {
-      const serverUrl = `${import.meta.env.VITE_SERVER_URL || window.origin}`;
+      // const serverUrl = `${import.meta.env.VITE_SERVER_URL || window.origin}`;
 
-      const newSocket = io(serverUrl, {
+      const newSocket = io("https://sockettalk.onrender.com", {
         query: {
           userId: authUser.user._id,
         },
