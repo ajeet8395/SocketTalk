@@ -15,27 +15,23 @@ export const SocketProvider = ({ children }) => {
 
   useEffect(() => {
     if (authUser) {
-      // const serverUrl = `${import.meta.env.VITE_SERVER_URL || window.origin}`;
-
-      const newSocket = io("https://sockettalk.onrender.com", {
+      const socket = io("https://sockettalk.onrender.com", {
         query: {
           userId: authUser.user._id,
         },
       });
-
-      setSocket(newSocket);
-
-      newSocket.on("getOnlineUsers", (users) => {
+      setSocket(socket);
+      socket.on("getOnlineUsers", (users) => {
         setOnlineUsers(users);
       });
-
-      return () => newSocket.close();
-    } 
-    else if (socket) {
-      socket.close();
-      setSocket(null);
+      return () => socket.close();
+    } else {
+      if (socket) {
+        socket.close();
+        setSocket(null);
+      }
     }
-    }, [authUser]);
+  }, [authUser]);
   return (
     <socketContext.Provider value={{ socket, onlineUsers }}>
       {children}

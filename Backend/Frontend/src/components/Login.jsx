@@ -24,13 +24,10 @@ function Login() {
       .post("/api/user/login", userInfo)
       .then((response) => {
         if (response.data) {
-          const { token, ...userDetails } = response.data;
-          console.log("JWT Token:", token);
-
           toast.success("Login successful");
-          localStorage.setItem("ChatApp", JSON.stringify(response.data));
-          setAuthUser(userDetails);
         }
+        localStorage.setItem("ChatApp", JSON.stringify(response.data));
+        setAuthUser(response.data);
       })
       .catch((error) => {
         if (error.response) {
@@ -43,16 +40,16 @@ function Login() {
       <div className="flex h-screen items-center justify-center">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="bg-gray-900 hover:bg-[#070c25] border border-black hover:border-gray-700 hover:border-2 transition-all duration-300 px-6 py-8 rounded-md space-y-3 w-96"
+          className="border border-black px-6 py-2 rounded-md space-y-3 w-96"
         >
-          <h1 className="text-2xl text-center items-center text-blue-600 font-bold">
+          <h1 className="text-2xl items-center text-blue-600 font-bold">
             Messenger
           </h1>
-          <h2 className="text-2xl items-center text-center">
+          <h2 className="text-2xl items-center">
             Login with your{" "}
             <span className="text-blue-600 font-semibold">Account</span>
           </h2>
-
+        
 
           {/* Email */}
           <label className="input input-bordered flex items-center gap-2">
@@ -112,11 +109,11 @@ function Login() {
               className="text-white bg-blue-600 cursor-pointer w-full rounded-lg py-2"
             ></input>
           </div>
-          <p className="text-center">
+          <p>
             Don't have any Account?{" "}
             <Link
               to={"/signup"}
-              className="text-blue-500 hover:underline cursor-pointer ml-1"
+              className="text-blue-500 underline cursor-pointer ml-1"
             >
               {" "}
               Signup

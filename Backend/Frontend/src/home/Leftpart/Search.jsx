@@ -7,7 +7,7 @@ function Search() {
   const [search, setSearch] = useState("");
   const [allUsers] = useGetAllUsers();
   const { setSelectedConversation } = useConversation();
-  // console.log(allUsers);
+  console.log(allUsers);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!search) return;
@@ -23,10 +23,10 @@ function Search() {
   };
   return (
     <div className=" h-[10vh]">
-      <div className="py-2">
+      <div className="px-6 py-4">
         <form onSubmit={handleSubmit}>
-          <div className="flex space-x-1">
-            <label className=" border-[1px] border-gray-700 bg-slate-900 rounded-lg p-3 flex items-center gap-2 w-[85%]">
+          <div className="flex space-x-3">
+            <label className=" border-[1px] border-gray-700 bg-slate-900 rounded-lg p-3 flex items-center gap-2 w-[80%]">
               <input
                 type="text"
                 className="grow outline-none bg-transparent"

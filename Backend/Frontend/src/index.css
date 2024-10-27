@@ -5,7 +5,3 @@
 .flex-1::-webkit-scrollbar {
   display: none;
 }
-
-body{
-  background-color: #1d232a;
-}
