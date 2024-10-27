@@ -12,17 +12,15 @@ function Right() {
     return setSelectedConversation(null);
   }, [setSelectedConversation]);
   return (
-    <div className="w-full bg-slate-900 text-gray-300">
+    <div className="w-full bg-slate-900 text-gray-300 h-screen flex flex-col">
       <div>
         {!selectedConversation ? (
           <NoChatSelected />
         ) : (
           <>
             <Chatuser />
-            <div
-              className=" flex-1 overflow-y-auto"
-              style={{ maxHeight: "calc(88vh - 8vh)" }}
-            >
+
+            <div className="flex-1 overflow-y-auto" style={{ maxHeight: "calc(100vh - 7rem)" }}>
               <Messages />
             </div>
             <Typesend />
@@ -37,7 +35,7 @@ export default Right;
 
 const NoChatSelected = () => {
   const [authUser] = useAuth();
-  console.log(authUser);
+  // console.log(authUser);
   return (
     <>
       <div className="relative">
