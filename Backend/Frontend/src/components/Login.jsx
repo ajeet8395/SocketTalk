@@ -24,10 +24,13 @@ function Login() {
       .post("/api/user/login", userInfo)
       .then((response) => {
         if (response.data) {
+          const { token, ...userDetails } = response.data;
+          console.log("JWT Token:", token);
+
           toast.success("Login successful");
+          localStorage.setItem("ChatApp", JSON.stringify(response.data));
+          setAuthUser(userDetails);
         }
-        localStorage.setItem("ChatApp", JSON.stringify(response.data));
-        setAuthUser(response.data);
       })
       .catch((error) => {
         if (error.response) {
@@ -49,7 +52,7 @@ function Login() {
             Login with your{" "}
             <span className="text-blue-600 font-semibold">Account</span>
           </h2>
-        
+
 
           {/* Email */}
           <label className="input input-bordered flex items-center gap-2">

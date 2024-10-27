@@ -15,23 +15,27 @@ export const SocketProvider = ({ children }) => {
 
   useEffect(() => {
     if (authUser) {
-      const socket = io("http://localhost:8002", {
+      const serverUrl = `${import.meta.env.VITE_SERVER_URL || window.origin}`;
+
+      const newSocket = io(serverUrl, {
         query: {
           userId: authUser.user._id,
         },
       });
-      setSocket(socket);
-      socket.on("getOnlineUsers", (users) => {
+
+      setSocket(newSocket);
+
+      newSocket.on("getOnlineUsers", (users) => {
         setOnlineUsers(users);
       });
-      return () => socket.close();
-    } else {
-      if (socket) {
-        socket.close();
-        setSocket(null);
-      }
+
+      return () => newSocket.close();
+    } 
+    else if (socket) {
+      socket.close();
+      setSocket(null);
     }
-  }, [authUser]);
+    }, [authUser]);
   return (
     <socketContext.Provider value={{ socket, onlineUsers }}>
       {children}

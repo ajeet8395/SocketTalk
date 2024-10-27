@@ -1,20 +1,17 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "SocketTalk ",
+  "description": "ChatApp ",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js",
-    "dev": "nodemon index.js",
-    "build": "npm install && npm install --prefix Frontend && npm run build --prefix Frontend"
-
+    "start": "nodemon index.js"
   },
   "keywords": [
     "MERN"
   ],
-  "author": "Ajeet Singh",
+  "author": "Akhilesh",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
