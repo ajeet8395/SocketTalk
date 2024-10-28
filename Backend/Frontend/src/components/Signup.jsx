@@ -55,7 +55,6 @@ function Signup() {
           muted
           loop
         ></video>
-        <div className="overlay"></div>
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="bg-gray-900 hover:bg-[#070c25] border border-black hover:border-gray-700 hover:border-2 transition-all duration-300 px-6 py-8 rounded-md space-y-3 w-96  relative z-10"
