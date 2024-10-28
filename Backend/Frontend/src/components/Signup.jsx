@@ -4,6 +4,8 @@ import axios from "axios";
 import { useAuth } from "../context/AuthProvider";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
+import bgVideo from "../assets/bg.mp4"
+
 function Signup() {
   const [authUser, setAuthUser] = useAuth();
   const {
@@ -45,10 +47,18 @@ function Signup() {
   };
   return (
     <>
-      <div className="flex h-screen items-center justify-center">
+      <div className="relative flex h-screen items-center justify-center">
+        <video
+          className="background-video"
+          src={bgVideo}
+          autoPlay
+          muted
+          loop
+        ></video>
+        <div className="overlay"></div>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="bg-gray-900 hover:bg-[#070c25] border border-black hover:border-gray-700 hover:border-2 transition-all duration-300 px-6 py-8 rounded-md space-y-3 w-96"
+          className="bg-gray-900 hover:bg-[#070c25] border border-black hover:border-gray-700 hover:border-2 transition-all duration-300 px-6 py-8 rounded-md space-y-3 w-96  relative z-10"
         >
           <h1 className="text-2xl text-center items-center text-blue-600 font-bold">
             Messenger
@@ -58,7 +68,7 @@ function Signup() {
             Create a new{" "}
             <span className="text-blue-600 font-semibold">Account</span>
           </h2>
-         
+
           {/* Fullname */}
           <label className="input input-bordered flex items-center gap-2">
             <svg
@@ -164,22 +174,22 @@ function Signup() {
 
           {/* Text & Button */}
           <div className="flex justify-center">
-              <input
-                type="submit"
-                value="Signup"
-                className="text-white bg-blue-600 cursor-pointer w-full rounded-lg py-2"
-              ></input>
-            </div>
-            <p className="text-center">
-              Have any Account?{" "}
-              <Link
-                to={"/login"}
-                className="text-blue-500 underline cursor-pointer ml-1"
-              >
-                {" "}
-                Login
-              </Link>
-            </p>
+            <input
+              type="submit"
+              value="Signup"
+              className="text-white bg-blue-600 cursor-pointer w-full rounded-lg py-2"
+            ></input>
+          </div>
+          <p className="text-center">
+            Have any Account?{" "}
+            <Link
+              to={"/login"}
+              className="text-blue-500 underline cursor-pointer ml-1"
+            >
+              {" "}
+              Login
+            </Link>
+          </p>
         </form>
       </div>
     </>

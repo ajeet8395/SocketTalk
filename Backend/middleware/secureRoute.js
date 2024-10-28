@@ -11,7 +11,7 @@ const secureRoute = async (req, res, next) => {
     if (!decoded) {
       return res.status(401).json({ error: "Invalid Token" });
     }
-    const user = await User.findById(decoded.userId).select("-password"); // current loggedin user
+    const user = await User.findById(decoded.userId).select("-password"); 
     if (!user) {
       return res.status(401).json({ error: "No user found" });
     }
